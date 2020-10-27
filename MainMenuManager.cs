@@ -15,13 +15,13 @@ public class MainMenuManager : MonoBehaviour
     public GameObject shapesMenu;
 
     // Saved input
-    private GameObject activeMenu;
-    private bool menuActive = false;
+    private GameObject _activeMenu;
+    private bool _menuActive = false;
     
     // Initial click on white button in top right corner of the screen
     public void OnMainMenuButtonClick()
     {
-        if (!menuActive)
+        if (!_menuActive)
         {
             OpenMenu();
         }
@@ -34,9 +34,9 @@ public class MainMenuManager : MonoBehaviour
     // Used when navigating between different menus
     public void OnMenuButtonClick(GameObject nextMenu)
     {
-        activeMenu.SetActive(false);
+        _activeMenu.SetActive(false);
         nextMenu.SetActive(true);
-        activeMenu = nextMenu;
+        _activeMenu = nextMenu;
     }
 
     // Opens main menu after UI button click
@@ -44,16 +44,16 @@ public class MainMenuManager : MonoBehaviour
     {
         menuBackground.SetActive(true);
         optionsMenu.SetActive(true);
-        activeMenu = optionsMenu;
-        menuActive = true;
+        _activeMenu = optionsMenu;
+        _menuActive = true;
     }
 
     // Closes main menu after UI button click
     private void CloseMenu()
     {
         menuBackground.SetActive(false);
-        activeMenu.SetActive(false);
-        activeMenu = null;
-        menuActive = false;
+        _activeMenu.SetActive(false);
+        _activeMenu = null;
+        _menuActive = false;
     }
 }
